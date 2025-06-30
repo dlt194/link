@@ -1,102 +1,87 @@
-# URL Shortener
+# Link Shortening Application
 
-A full-stack application for shortening URLs, built with **React** (frontend) and **Express** (backend).
+A modern link shortener built with **React (Vite)**, **ShadUI** for the frontend, and **Supabase** as the backend.
 
 ## Features
 
-- Shorten long URLs to easy-to-share links
-- Redirect to original URLs using short links
-- View history of shortened URLs
-- Responsive and user-friendly interface
+- Shorten long URLs with a single click
+- User authentication (Supabase Auth)
+- Dashboard to manage your links
+- Analytics: track clicks and usage
+- Responsive UI with ShadUI components
 
 ## Tech Stack
 
-- **Frontend:** React, Axios, CSS/Styled Components
-- **Backend:** Express, Node.js, MongoDB (or your preferred database)
-- **Other:** REST API, dotenv
+- **Frontend:** React (Vite), ShadUI, TypeScript
+- **Backend:** Supabase (Database & Auth)
+- **Deployment:** Vercel/Netlify (Frontend), Supabase (Backend)
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js & npm
-- MongoDB (or another database)
+- Supabase account
 
-### Installation
+### Setup
 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/url-shortener.git
-   cd url-shortener
+   git clone https://github.com/dlt194/link-shortener.git
+   cd link-shortener
    ```
 
 2. **Install dependencies:**
 
-   - Backend:
-     ```bash
-     cd server
-     npm install
-     ```
-   - Frontend:
-     ```bash
-     cd ../client
-     npm install
-     ```
+   ```bash
+   npm install
+   ```
 
-3. **Configure environment variables:**
+3. **Configure Supabase:**
 
-   - Create a `.env` file in `/server` with your database URI and other secrets.
-
-4. **Run the application:**
-   - Start backend:
-     ```bash
-     cd server
-     npm start
+   - Create a new project on [Supabase](https://supabase.com/)
+   - Copy your Supabase URL and anon key
+   - Create a `.env` file:
      ```
-   - Start frontend:
-     ```bash
-     cd ../client
-     npm start
+     VITE_SUPABASE_URL=your-supabase-url
+     VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
      ```
 
-## Usage
-
-1. Enter a long URL in the input field.
-2. Click "Shorten".
-3. Copy and share the generated short URL.
+4. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
 
 ## Folder Structure
 
 ```
 url-shortener/
-├── backend/
-│   ├── src/
-│   │   ├── controllers/        # Logic for endpoints (shorten, list, delete)
-│   │   ├── models/             # DB access layer (e.g. URL model, DB utils)
-│   │   ├── routes/             # Express routers
-│   │   ├── middleware/         # (optional) e.g. session handling, error handlers
-│   │   ├── app.js              # Express app config
-│   │   └── server.js           # Entry point (starts server)
-│   ├── database/
-│   │   └── database.db         # SQLite database file (generated at runtime)
-│   ├── package.json
-│   └── .env                    # (optional) Configs like PORT
-│
 ├── frontend/
 │   ├── src/
-│   │   ├── components/         # React components (URL form, URL list, etc.)
-│   │   ├── pages/              # If you want page-level components (e.g. Dashboard)
-│   │   ├── utils/              # Helpers (e.g. API client, session manager)
-│   │   ├── App.js
-│   │   └── index.js
+│   │   ├── components/         # Shadcn components (URLForm, URLList, etc.)
+│   │   ├── pages/              # (optional) Page-level components
+│   │   ├── utils/              # API client, session management
+│   │   ├── App.tsx / App.jsx   # App entry
+│   │   └── main.tsx / main.jsx # Vite entry
 │   ├── public/
+│   ├── index.html
 │   ├── package.json
-│   └── vite.config.js / CRA config  # (depending on setup)
+│   └── vite.config.ts / vite.config.js
 │
 ├── README.md
 └── .gitignore
 ```
+
+## Database Schema (Supabase)
+
+- **links**
+  - `id`: UUID (Primary Key)
+  - `original_url`: Text
+  - `short_code`: Text (Unique)
+  - `user_id`: UUID (Foreign Key)
+  - `clicks`: Integer
+  - `created_at`: Timestamp
 
 ## License
 
@@ -104,4 +89,4 @@ MIT
 
 ---
 
-_Feel free to contribute or open issues!_
+Built with ❤️ using React, ShadUI, and Supabase.
