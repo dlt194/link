@@ -1,4 +1,4 @@
-# 🔗 URL Shortener
+# URL Shortener
 
 A lightweight, configurable URL shortener with:
 
@@ -9,16 +9,16 @@ A lightweight, configurable URL shortener with:
 
 ---
 
-## 🚀 Features
+## Features
 
-✅ Shorten URLs with custom 8-character alphanumeric IDs  
-✅ Auto-sync sidebar with Supabase Realtime  
-✅ Supports per-user Supabase instance + domain configuration  
-✅ Docker build — easy to deploy
+- Shorten URLs with custom 8-character alphanumeric IDs
+- Auto-sync sidebar with Supabase Realtime
+- Supports per-user Supabase instance + domain configuration
+- Docker build — easy to deploy
 
 ---
 
-## ⚡ Environment Variables
+## Environment Variables
 
 Create a `.env` file in `frontend/` or pass these at build/runtime:
 
